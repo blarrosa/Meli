@@ -1,0 +1,29 @@
+{
+  "name": "meli",
+  "version": "1.0.0",
+  "description": "Mercadolibre FE challenge",
+  "main": "index.js",
+  "author": "Brandon Larrosa brandonlarrosa8@gmail.com",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npm run dev --workspace server",
+    "client": "npm run start --workspace client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blarrosa/Meli.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "bugs": {
+    "url": "https://github.com/blarrosa/Meli/issues"
+  },
+  "homepage": "https://github.com/blarrosa/Meli#readme",
+  "dependencies": {
+    "typescript": "^5.0.4"
+  }
+}
