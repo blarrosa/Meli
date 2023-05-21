@@ -1,0 +1,13 @@
+:root {
+  --bodyColor: #ebebeb;
+  --primaryColor: #fff159;
+}
+
+body {
+  background-color: var(--bodyColor);
+  margin: 0;
+  font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto,
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
