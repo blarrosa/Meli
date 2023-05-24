@@ -10,19 +10,15 @@ const getCacheClient = async () => {
   return client;
 };
 
-const cachedQuery = async <T>(
-  endpointURL: string,
-  cacheKey: string,
-  mapper: (data: any) => Promise<T>,
-) => {
+const cachedQuery = async <T, K>(endpointURL: string, cacheKey: string, mapper: (data: K) => T) => {
   const cacheClient = await getCacheClient();
 
-  let response: any = cacheClient.get(cacheKey);
+  let response = cacheClient.get<T>(cacheKey);
 
   if (!response) {
-    const currencyResponse = mapper((await axios.get(endpointURL)).data);
-    cacheClient.set(cacheKey, currencyResponse);
-    response = currencyResponse;
+    const processedData = mapper((await axios.get(endpointURL)).data);
+    cacheClient.set(cacheKey, processedData);
+    response = processedData;
   }
   return response;
 };

@@ -14,9 +14,9 @@ enum SITES {
   AR = "MLA",
 }
 
-type getApiUrlParams = {
+interface getApiUrlParams {
   site: string;
-};
+}
 
 export const getAPIURL = (props?: getApiUrlParams): string => {
   const { site } = props || {};

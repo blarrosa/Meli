@@ -1,9 +1,9 @@
-export type Author = {
+export interface Author {
   author: {
     name: string;
     lastname: string;
   };
-};
+}
 
 const signResponse = <T>(data: T): T & Author => ({
   author: {
