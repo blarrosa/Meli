@@ -14,8 +14,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmitOnError": true,
+    "jsx": "react-jsx",
+    "outDir": "./dist/",
+    "paths": { 
+        "components/*": ["./src/components/*"],
+        "core/*": ["./src/core/*"],
+        "libs/*": ["./src/libs/*"],
+        "pages/*": ["./src/pages/*"],
+        "assets/*": ["./src/assets/*"],
+      }
   },
   "include": ["src"]
 }
