@@ -16,11 +16,31 @@
     url("./fonts/proximanova-semibold.woff2") format("woff");
 }
 
+html{
+  //This was done to use REM in a friendly way.
+  font-size: 62.5%;
+}
 body {
+  color: $black;
+  font-size: 1.6rem;
   background-color: $bodyColor;
   margin: 0;
   font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto,
     Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight: bold;
+}
+h1{
+  font-size:$fontXXL;
+
+}
+h2{
+  font-size:$fontXL;
+}
+h3{
+  font-size:$fontL;
 }

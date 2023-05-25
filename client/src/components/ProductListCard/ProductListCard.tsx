@@ -2,10 +2,10 @@ import { ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import ProductCard from '../ProductCard/ProductCard';
 import styles from "./ProductListCard.module.scss";
-import {Item} from "../../../../types/API_Types";
+import {ItemPLP} from "../../../../types/API_Types";
 
 interface Props{
-items: Item[];
+items: ItemPLP[];
 }
 
 export default function ProductListCard(props: Props) {

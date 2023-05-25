@@ -1,5 +1,8 @@
+@import "../../../core/Styles/_variables";
+
 .breadcrumb{
-    margin: 15px 0;
+    color: $grey;
+    margin: $marginS 0;
 
     span{
         &:not(:first-child){

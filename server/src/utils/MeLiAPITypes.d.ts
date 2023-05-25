@@ -104,3 +104,7 @@ export interface PLPModel {
   categories: string[];
   items: Item[];
 }
+
+export type ItemPLP = Item & {
+  city_name: number;
+};
