@@ -3,7 +3,7 @@ import { API_ENDPOINTS } from "../utils/APIHelpers";
 import { Categories, Item_ML, Picture } from "../utils/MeLiAPITypes";
 
 interface Pictures {
-  thumbnail?: string;
+  thumbnail: string;
   pictures?: Picture[];
 }
 

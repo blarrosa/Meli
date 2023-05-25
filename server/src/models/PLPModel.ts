@@ -1,8 +1,7 @@
 import { cachedQuery } from "../utils/cache";
 import { API_ENDPOINTS } from "../utils/APIHelpers";
 import { mapItem, mapCategory } from "./ItemModel";
-import { Categories, Item_ML, Items_ML } from "src/utils/MeLiAPITypes";
-import { PLPModel } from "../../../types/API_Types";
+import { Categories, Item_ML, Items_ML, PLPModel } from "src/utils/MeLiAPITypes";
 
 const getCategory = (data: Items_ML): string => {
   return data.results[0].category_id;

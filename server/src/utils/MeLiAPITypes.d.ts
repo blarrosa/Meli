@@ -1,3 +1,5 @@
+import { Item } from "../../dist/src/models/ItemModel";
+
 export interface Item_ML {
   id: string;
   site_id: string;
@@ -86,4 +88,19 @@ export interface Category {
 
 export interface Categories extends Category {
   path_from_root: Category[];
+}
+
+export interface PDPModel {
+  item: ItemPDP;
+  breadcrumb: string[];
+}
+
+interface ItemPDP extends Item {
+  sold_quantity: number;
+  description: string;
+}
+
+export interface PLPModel {
+  categories: string[];
+  items: Item[];
 }

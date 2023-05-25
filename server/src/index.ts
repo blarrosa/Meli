@@ -2,10 +2,11 @@ import express, { Request, Response } from "express";
 const cors = require("cors");
 import axios, { HttpStatusCode } from "axios";
 import * as dotenv from "dotenv";
-import mapItemResponseToPDPModel, { PDPModel } from "./models/PDPModel";
-import mapItemResponseToPLPModel, { PLPModel } from "./models/PLPModel";
+import mapItemResponseToPDPModel from "./models/PDPModel";
+import mapItemResponseToPLPModel from "./models/PLPModel";
 import signResponse from "./models/AuthorModel";
 import { API_ENDPOINTS } from "./utils/APIHelpers";
+import { PDPModel, PLPModel } from "./utils/MeLiAPITypes";
 
 dotenv.config({ path: "../.env.local" });
 const app = express();

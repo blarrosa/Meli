@@ -4,9 +4,10 @@ import Image from "../atoms/Image/Image";
 import FreeShippingIcon from "../atoms/Icons/FreeShippingIcon";
 import NewIcon from "../atoms/Icons/NewIcon";
 import { formatPrice } from "../../utils/Formatters";
+import {Item} from "../../../../types/API_Types";
 
 interface Props {
-  item: any;
+  item: Item;
 }
 export default function ProductCard(props: Props) {
   const { item } = props;

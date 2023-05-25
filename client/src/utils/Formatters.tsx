@@ -7,12 +7,12 @@ export interface Currency {
   }
   
  export const formatPrice = (
-    price: string,
-    priceDecimals: string,
+    price: number,
+    priceDecimals: number,
     currency: Currency
   ) => {
     let formattedDecimals;
-    if (priceDecimals.length > currency.decimals) {
+    if (`${priceDecimals}`.length > currency.decimals) {
       formattedDecimals = `${priceDecimals}`.slice(0, currency.decimals);
     } else {
       formattedDecimals = `${priceDecimals}`.padEnd(currency.decimals, "0");
