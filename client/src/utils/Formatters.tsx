@@ -11,13 +11,12 @@ export interface Currency {
     priceDecimals: number,
     currency: Currency
   ) => {
-    let formattedDecimals;
-    if (`${priceDecimals}`.length > currency.decimals) {
-      formattedDecimals = `${priceDecimals}`.slice(0, currency.decimals);
-    } else {
-      formattedDecimals = `${priceDecimals}`.padEnd(currency.decimals, "0");
-    }
-    return `${currency.symbol} ${price}.${formattedDecimals}`;
+    const formatter = new Intl.NumberFormat("es-UY", {
+        style:"currency",
+        currency: currency.id
+    })
+
+     return formatter.format(+[price,priceDecimals].join("."));
   };
 
   export const parseTextToComponent = (text: string) => (
