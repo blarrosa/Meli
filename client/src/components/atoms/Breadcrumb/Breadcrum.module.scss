@@ -1,0 +1,11 @@
+.breadcrumb{
+    margin: 15px 0;
+
+    span{
+        &:not(:first-child){
+            &:before{
+                content: '>';
+            }
+        }
+    }
+}

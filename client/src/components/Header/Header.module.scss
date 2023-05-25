@@ -1,0 +1,11 @@
+@import "../../core/Styles/_variables";
+
+.header{
+    background-color: $backgroundPrimaryColor;
+}
+
+.container{
+    @media (min-width: 1250px) {
+        justify-content: center;
+      }
+}

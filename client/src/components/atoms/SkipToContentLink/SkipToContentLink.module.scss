@@ -1,0 +1,17 @@
+@import "../../../core/Styles/_variables";
+
+.skipLink{
+    &:focus, &:active {
+        color: #fff;
+        background-color:$primaryColor;
+        overflow:auto;
+        padding:5px;
+        border-radius: 15px;
+        border:2px solid black;
+        text-align:center;
+        z-index:999;
+        clip: initial;
+    clip-path: none;
+    }
+}
+

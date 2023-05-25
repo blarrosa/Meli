@@ -1,5 +1,6 @@
-export default function Home() {
-  const a: any = 1;
+import React from "react";
 
-  return <>{a}</>;
+export default function Home() {
+
+  return <>hola</>;
 }

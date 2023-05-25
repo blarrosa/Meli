@@ -1,0 +1,33 @@
+.form{
+    display:flex;
+    align-items: center;
+    height: 40px;
+}
+
+.input{
+    width: 100%;
+    padding: 10px;
+    height: 100%;
+    border:0;
+}
+
+.button{
+    width: 40px;
+    border: none;
+    outline: none;
+    background: white;
+    padding: 0;
+    height: 40px;
+
+    &:before{
+        content: "";
+    display: block;
+    height: 25px;
+    border-left: 1px solid #e6e6e6;
+    position: absolute;
+    }
+
+    &:focus{
+        border: 2px solid;
+    }
+}
