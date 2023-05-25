@@ -1,0 +1,19 @@
+@import "../../core/Styles/_variables";
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.productPrice{
+  font-size:$fontXL;
+  font-weight: bold;
+}
+
+.additionalInfo{
+  font-size:$fontXS;
+}
+
+.buyButton{
+  margin: $marginM 0;
+}

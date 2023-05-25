@@ -1,0 +1,22 @@
+@import "../../../core/Styles/_variables";
+
+.button{
+  border: none;
+  border-radius: 5px;
+  cursor:pointer;
+  width: 100%;
+  padding:10px
+}
+
+.primary{
+  background-color: $primaryColor;
+  color: $white;
+}
+
+.secondary{
+// To be defined in the future
+}
+
+.tertiary{
+  // To be defined in the future
+}

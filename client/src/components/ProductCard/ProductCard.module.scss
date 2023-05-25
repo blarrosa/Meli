@@ -1,0 +1,18 @@
+@import "../../core/Styles/_variables";
+
+.productCardContainer {
+  align-items: center;
+}
+
+.productCardImage {
+  display: flex;
+  justify-content: center;
+}
+
+.productItemCity {
+  color: $grey;
+}
+
+.freeShipping{
+  margin-left:$marginS;
+}
