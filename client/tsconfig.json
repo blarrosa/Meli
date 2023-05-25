@@ -16,14 +16,7 @@
     "isolatedModules": true,
     "noEmitOnError": true,
     "jsx": "react-jsx",
-    "outDir": "./dist/",
-    "paths": { 
-        "components/*": ["./src/components/*"],
-        "core/*": ["./src/core/*"],
-        "libs/*": ["./src/libs/*"],
-        "pages/*": ["./src/pages/*"],
-        "assets/*": ["./src/assets/*"],
-      }
+    "outDir": "./dist/"
   },
   "include": ["src"]
 }

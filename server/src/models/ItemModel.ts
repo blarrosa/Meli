@@ -1,68 +1,66 @@
 import { cachedQuery } from "../utils/cache";
 import { API_ENDPOINTS } from "../utils/APIHelpers";
+import { Categories, Item_ML, Picture } from "../utils/MeLiAPITypes";
 
-type Picture = {
-  id: string;
-  url: string;
-  secure_url: string;
-  size: string;
-  max_size: string;
-  quality: string;
-};
-
-type Pictures = {
+interface Pictures {
   thumbnail?: string;
   pictures?: Picture[];
-};
+}
 
-type Currency = {
+interface Currency {
   id: string;
   symbol: string;
   decimals: number;
-};
+}
 
-type Price = {
-  currency: string;
+interface Price {
+  currency: Currency;
   amount: number;
   decimals: number;
-};
+}
 
-export type Item = {
+export interface Item {
   id: string;
   title: string;
   price: Price;
   picture: Pictures;
   condition: string;
   free_shipping: boolean;
-};
+}
 
-const mapPicturesFromData = (data: any) => ({
+const mapPicturesFromData = (data: Item_ML): Pictures => ({
   thumbnail: data.thumbnail,
   //In this case, the only picture used is the thumbnail. It could return all the images of the item
-  pictures: data.pictures?.find((pic: Picture) => pic.id === data.thumbnail_id),
+  pictures: data.pictures?.filter((pic: Picture) => pic.id === data.thumbnail_id) || [],
 });
 
-const mapPriceFromData = async (data: any): Promise<Price> => {
-  const currency: Currency = await cachedQuery<Currency>(
+const mapPriceFromData = async (data: Item_ML): Promise<Price> => {
+  const currency: Currency = await cachedQuery<Currency, Item_ML>(
     API_ENDPOINTS.currencies(data.currency_id),
     data.currency_id,
     mapCurrency,
   );
 
+  const [amount, decimals] = `${data.price}`.split(".");
+
   return {
-    currency: currency.symbol,
-    amount: data.price,
-    decimals: currency.decimals,
+    currency: currency,
+    amount: +amount,
+    decimals: +decimals || 0,
   };
 };
 
-const mapCurrency = async (data: any): Promise<Currency> => ({
+const mapCurrency = (data: Item_ML): Currency => ({
   id: data.id,
   symbol: data.symbol,
   decimals: data.decimal_places,
 });
 
-const mapItem = async (data: any): Promise<Item> => {
+export const mapCategory = (data: Categories): string[] => {
+  return data.path_from_root.map((category) => category.name);
+};
+
+export const mapItem = async (data: Item_ML): Promise<Item> => {
   return {
     id: data.id,
     title: data.title,
@@ -72,5 +70,3 @@ const mapItem = async (data: any): Promise<Item> => {
     free_shipping: data.shipping.free_shipping,
   };
 };
-
-export default mapItem;

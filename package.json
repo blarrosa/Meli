@@ -6,7 +6,7 @@
   "author": "Brandon Larrosa brandonlarrosa8@gmail.com",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "npm run dev --workspace prod",
+    "server": "npm run dev --workspace server",
     "client": "npm run start --workspace client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "lint": "eslint --ignore-path .eslintignore --ext .tsx,.ts .",

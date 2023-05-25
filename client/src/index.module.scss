@@ -1,10 +1,23 @@
-:root {
-  --bodyColor: #ebebeb;
-  --primaryColor: #fff159;
+@import "core/Styles/_variables";
+
+@font-face {
+  font-family: "Proxima Nova Light";
+  src: local("proximanova-light"),
+    url("./fonts/proximanova-light.woff2") format("woff");
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: local("proximanova-regular"),
+    url("./fonts/proximanova-regular.woff2") format("woff");
+}
+@font-face {
+  font-family: "Proxima Nova Bold";
+  src: local("proximanova-semibold"),
+    url("./fonts/proximanova-semibold.woff2") format("woff");
 }
 
 body {
-  background-color: var(--bodyColor);
+  background-color: $bodyColor;
   margin: 0;
   font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto,
     Arial, sans-serif;

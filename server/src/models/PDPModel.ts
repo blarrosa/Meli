@@ -1,15 +1,10 @@
-import mapItem, { Item } from "./ItemModel";
+import { Categories, Item_ML } from "../utils/MeLiAPITypes";
+import { mapItem, mapCategory } from "./ItemModel";
+import { cachedQuery } from "../utils/cache";
+import { API_ENDPOINTS } from "../utils/APIHelpers";
+import { ItemPDP, PDPModel } from "../../../types/API_Types";
 
-type ItemPDP = {
-  sold_quantity: number;
-  description: string;
-} & Item;
-
-export type PDPModel = {
-  item: ItemPDP;
-};
-
-const mapItemPDP = async (data: any): Promise<ItemPDP> => {
+const mapItemPDP = async (data: Item_ML): Promise<ItemPDP> => {
   const itemData = await mapItem(data);
 
   return {
@@ -19,8 +14,13 @@ const mapItemPDP = async (data: any): Promise<ItemPDP> => {
   };
 };
 
-const mapItemResponseToPDPModel = async (data: any): Promise<PDPModel> => ({
+const mapItemResponseToPDPModel = async (data: Item_ML): Promise<PDPModel> => ({
   item: await mapItemPDP(data),
+  breadcrumb: await cachedQuery<string[], Categories>(
+    API_ENDPOINTS.categories(data.category_id),
+    data.category_id,
+    mapCategory,
+  ),
 });
 
 export default mapItemResponseToPDPModel;
