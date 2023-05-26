@@ -1,6 +1,13 @@
 import React from "react";
+import Head from "../core/HeadComponent/Head";
 
 export default function Home() {
 
-  return <>hola</>;
+  return (
+      <>
+        <Head>
+          <title>{`Home | Mercadolibre`}</title>
+        </Head>
+      </>
+  );
 }
