@@ -6,6 +6,7 @@ import Product from "../components/Product/Product";
 import ContainerComponent from "../components/ContainerComponent/ContainerComponent";
 import Loader from "../components/atoms/Loader/Loader";
 import Head from "../core/HeadComponent/Head";
+import {ItemPDP} from "../../../types/API_Types";
 
 
 export default function PDP() {
@@ -31,6 +32,7 @@ export default function PDP() {
         <>
             <Head>
                 <title>{`${item.title} | Mercadolibre`}</title>
+                <script type="application/ld+json">{getJsonLD(item)}</script>
             </Head>
             <ContainerComponent breadcrumb={breadcrumb}>
                 <Product item={item}/>
@@ -38,3 +40,20 @@ export default function PDP() {
         </>
     );
 }
+
+
+const getJsonLD = (item: ItemPDP) => (
+    JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        description: item.description,
+        name: item.title,
+        image: item.picture.thumbnail,
+        "offers": {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock",
+            price: `${item.price.amount}${item.price.decimals}`,
+            priceCurrency: item.price.currency.id
+        }
+    })
+)
