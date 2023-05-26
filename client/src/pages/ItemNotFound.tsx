@@ -16,6 +16,7 @@ export default function ItemNotFound(props: Props) {
             <EmptyState>
                 <MagnifierIcon/>
                 Oops! No pudimos encontrar el articulo que estas buscando, vuelve a intentarlo.
-            </EmptyState></>
+            </EmptyState>
+        </>
     );
 }
