@@ -5,6 +5,7 @@ import ProductListCard from "../components/ProductListCard/ProductListCard";
 import ContainerComponent from "../components/ContainerComponent/ContainerComponent";
 import Loader from "../components/atoms/Loader/Loader";
 import Head from "../core/HeadComponent/Head";
+import SearchCriteriaNotFound from "./SearchCriteriaNotFound";
 
 
 export default function PLP() {
@@ -29,7 +30,13 @@ export default function PLP() {
     }, [query]);
 
     if (isLoading || componentQuery !== query) return <Loader/>;
-    if (error) return <>Error</>;
+    if (error) {
+        const {response} = error;
+        if (response?.status === 404) {
+            return <SearchCriteriaNotFound search={query}/>
+        }
+        throw new Error(error);
+    }
 
     return (
         <>

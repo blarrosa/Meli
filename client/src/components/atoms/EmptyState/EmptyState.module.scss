@@ -1,0 +1,9 @@
+.notFoundContainer {
+  display: flex;
+  height: 100vh;
+
+  & > div {
+    align-items: center;
+    justify-content: center;
+  }
+}

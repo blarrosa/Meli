@@ -33,7 +33,12 @@ app.get(API_BASE_URL, async (req: Request, res: Response) => {
   });
 
   try {
-    const searchData = (await axios.get(API_ENDPOINTS.search({ site: "UY" }, queryParams))).data;
+    const { data: searchData } = await axios.get(API_ENDPOINTS.search({ site: "UY" }, queryParams));
+
+    if (searchData.results.length == 0) {
+      throw new Error("No results");
+    }
+
     const response = await mapItemResponseToPLPModel(searchData);
 
     res.send(signResponse<PLPModel>(response));
@@ -63,10 +68,14 @@ app.get(`${API_BASE_URL}/:id`, async (req: Request, res: Response) => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const handleError = (error: any, res: Response) => {
+  const notFoundRequestMessage = `Sorry, we couldn't find the item you are looking for.`;
   if (axios.isAxiosError(error)) {
-    if (error.response!.status === HttpStatusCode.NotFound) {
-      return res.status(404).send(`Sorry, we couldn't find the item you are looking for.`);
+    if (error.response?.status === HttpStatusCode.NotFound) {
+      return res.status(404).send(notFoundRequestMessage);
     }
+  }
+  if (error.message === "No results") {
+    return res.status(404).send(notFoundRequestMessage);
   }
   return res.status(500).send("Currently our servers are not available. Please try later");
 };

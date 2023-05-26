@@ -7,6 +7,7 @@ import ContainerComponent from "../components/ContainerComponent/ContainerCompon
 import Loader from "../components/atoms/Loader/Loader";
 import Head from "../core/HeadComponent/Head";
 import {ItemPDP} from "../../../types/API_Types";
+import ItemNotFound from "./ItemNotFound";
 
 
 export default function PDP() {
@@ -26,7 +27,14 @@ export default function PDP() {
     }, [itemID]);
 
     if (isLoading || componentID !== itemID) return <Loader/>;
-    if (error) return <>Error</>;
+    if (error) {
+        const {response} = error;
+        if (response?.status === 404) {
+            return <ItemNotFound item={itemID}/>
+        }
+        throw new Error(error);
+
+    }
 
     return (
         <>
