@@ -1,5 +1,6 @@
 import React, {Component, ErrorInfo, ReactNode} from "react";
 import EmptyState from "../../components/atoms/EmptyState/EmptyState";
+import Head from "../HeadComponent/Head";
 
 interface Props {
     children?: ReactNode;
@@ -27,9 +28,14 @@ class ErrorBoundary extends Component<Props, State> {
     render() {
         if (this.state.hasError) {
             return (
-                <EmptyState>
-                    Nuestros servidores estan experimentando algunos errores, vuelve a intentarlo luego.
-                </EmptyState>
+                <>
+                    <Head>
+                        <title>{`Nuestros servidores estan experimentando algunos errores, vuelve a intentarlo luego | Mercadolibre`}</title>
+                    </Head>
+                    <EmptyState>
+                        Oops! Nuestros servidores estan experimentando algunos errores, vuelve a intentarlo luego.
+                    </EmptyState>
+                </>
             );
         }
         return this.props.children;

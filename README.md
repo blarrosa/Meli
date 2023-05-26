@@ -11,3 +11,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Compiles the client and server, client files are served by the server.
 
 Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
+
+### `npm run client`
+Runs the FE app
+
+### `npm run server`
+Runs the Server app
+
