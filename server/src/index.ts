@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 const cors = require("cors");
+const path = require("path");
 import axios, { HttpStatusCode } from "axios";
 import * as dotenv from "dotenv";
 import mapItemResponseToPDPModel from "./models/PDPModel";
@@ -9,13 +10,16 @@ import { API_ENDPOINTS } from "./utils/APIHelpers";
 import { PDPModel, PLPModel } from "./utils/MeLiAPITypes";
 
 dotenv.config({ path: "../.env.local" });
+
+const PORT: number = parseInt(process.env.SERVER_PORT || "") || 3020;
 const app = express();
 app.use(cors());
-const PORT: number = parseInt(process.env.SERVER_PORT || "") || 3020;
+
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server started on port ${PORT}`);
 });
+app.use(express.static(path.join(__dirname, "../../../client/", "build")));
 
 const API_BASE_URL = "/api/items";
 
@@ -66,3 +70,7 @@ export const handleError = (error: any, res: Response) => {
   }
   return res.status(500).send("Currently our servers are not available. Please try later");
 };
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../../client/build", "index.html"));
+});

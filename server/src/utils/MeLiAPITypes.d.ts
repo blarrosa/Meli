@@ -1,5 +1,3 @@
-import { Item } from "../../dist/src/models/ItemModel";
-
 export interface Item_ML {
   id: string;
   site_id: string;
@@ -93,6 +91,32 @@ export interface Categories extends Category {
 export interface PDPModel {
   item: ItemPDP;
   breadcrumb: string[];
+}
+
+export interface Pictures {
+  thumbnail: string;
+  pictures?: Picture[];
+}
+
+export interface Currency {
+  id: string;
+  symbol: string;
+  decimals: number;
+}
+
+interface Price {
+  currency: Currency;
+  amount: number;
+  decimals: number;
+}
+
+export interface Item {
+  id: string;
+  title: string;
+  price: Price;
+  picture: Pictures;
+  condition: string;
+  free_shipping: boolean;
 }
 
 interface ItemPDP extends Item {

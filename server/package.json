@@ -5,8 +5,8 @@
   "main": "dist/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"tsc --watch\" \"nodemon -q dist/index.js\"",
-    "prod": "node dist/index.js"
+    "dev": "concurrently \"tsc --watch\" \"nodemon -q dist/src/index.js\"",
+    "prod": "tsc && node dist/src/index.js"
   },
   "author": "Brandon Larrosa brandonlarrosa8@gmail.com",
   "license": "ISC",

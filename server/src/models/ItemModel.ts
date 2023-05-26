@@ -1,32 +1,14 @@
 import { cachedQuery } from "../utils/cache";
 import { API_ENDPOINTS } from "../utils/APIHelpers";
-import { Categories, Item_ML, Picture } from "../utils/MeLiAPITypes";
-
-interface Pictures {
-  thumbnail: string;
-  pictures?: Picture[];
-}
-
-interface Currency {
-  id: string;
-  symbol: string;
-  decimals: number;
-}
-
-interface Price {
-  currency: Currency;
-  amount: number;
-  decimals: number;
-}
-
-export interface Item {
-  id: string;
-  title: string;
-  price: Price;
-  picture: Pictures;
-  condition: string;
-  free_shipping: boolean;
-}
+import {
+  Categories,
+  Currency,
+  Item,
+  Item_ML,
+  Picture,
+  Pictures,
+  Price,
+} from "../utils/MeLiAPITypes";
 
 const mapPicturesFromData = (data: Item_ML): Pictures => ({
   thumbnail: data.thumbnail,
